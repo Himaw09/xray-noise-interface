@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Noise Detection and Enhancement in X-ray Imaging</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #e3f2fd;
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .header img {
+            height: 60px;
+        }
+        h2 {
+            color: #007bff;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .image-box {
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="kdu_logo.png" alt="KDU University Logo">
+            <h2>Automated Noise Detection and Enhancement in X-ray Imaging Using Convolutional Neural Networks</h2>
+        </div>
+        <input type="file" id="upload" accept="image/*">
+        <button onclick="processImage()">Submit</button>
+        <p id="noiseLevel"></p>
+        
+        <div class="image-container">
+            <div class="image-box">
+                <h3>Original Image</h3>
+                <img id="originalImage" style="display:none;" alt="Original X-Ray">
+            </div>
+            <div class="image-box">
+                <h3>Enhanced Image</h3>
+                <img id="enhancedImage" style="display:none;" alt="Enhanced X-Ray">
+            </div>
+        </div>
+        
+        <br>
+        <a id="downloadLink" style="display:none;" download="enhanced_xray.png">Download Enhanced Image</a>
+    </div>
+
+    <script>
+        function processImage() {
+            let fileInput = document.getElementById('upload');
+            if (fileInput.files.length === 0) {
+                alert("Please upload an X-ray image first.");
+                return;
+            }
+            
+            let noiseLevel = Math.random().toFixed(2); // Placeholder for actual CNN processing
+            document.getElementById('noiseLevel').innerText = "Noise Level: " + noiseLevel;
+            
+            // Display original image
+            let originalImg = document.getElementById('originalImage');
+            originalImg.src = URL.createObjectURL(fileInput.files[0]);
+            originalImg.style.display = 'block';
+            
+            // Simulating enhanced image display (replace with actual processed image from backend)
+            let enhancedImg = document.getElementById('enhancedImage');
+            enhancedImg.src = URL.createObjectURL(fileInput.files[0]); // Placeholder
+            enhancedImg.style.display = 'block';
+            
+            // Show download option
+            let downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = enhancedImg.src;
+            downloadLink.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
